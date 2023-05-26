@@ -9,19 +9,17 @@ import './MainNavigation.css';
 
 const MainNavigation = props => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const openDrawer = ()=>{setDrawerIsOpen(!drawerIsOpen)}  
-  const closeDrawer = ()=>{setDrawerIsOpen(!drawerIsOpen)}
-
+  const toggleDrawerHandler = ()=>{setDrawerIsOpen(!drawerIsOpen)}  
   return (
     <React.Fragment>
-      {drawerIsOpen && <Backdrop onClick={closeDrawer}/>}
-      {drawerIsOpen && <SideDrawer>
+      {drawerIsOpen && <Backdrop onClick={toggleDrawerHandler}/>}
+      <SideDrawer show={drawerIsOpen} onClick={toggleDrawerHandler}>
         <nav className="main-navigation__drawer-nav">
           <NavLinks />
         </nav>
-      </SideDrawer> }
+      </SideDrawer> 
       <MainHeader>
-        <button className="main-navigation__menu-btn" onClick={openDrawer}>
+        <button className="main-navigation__menu-btn" onClick={toggleDrawerHandler}>
           <span />
           <span />
           <span />
